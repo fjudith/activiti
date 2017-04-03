@@ -7,7 +7,7 @@
 ### 
 FROM openjdk:7
 MAINTAINER Frank Wang "eternnoir@gmail.com"
-
+USER developer
 EXPOSE 8080
 
 ENV TOMCAT_VERSION 8.0.38
