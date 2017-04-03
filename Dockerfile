@@ -51,4 +51,4 @@ RUN chmod -R 0 /opt && \
  find /tmp -type d -exec chmod g+x {} + && \
  chown -R 1001:0 /opt && \
  chown -R 1001:0 /tmp
-USER gogunn
+#USER gogunn
