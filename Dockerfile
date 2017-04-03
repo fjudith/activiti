@@ -4,10 +4,10 @@
 # Pull base image.
 ### http://blog.docker.com/2015/03/updates-available-to-popular-repos-update-your-images/
 # dockerfile/java renamed to java
-### 
+###
 FROM openjdk:7
 MAINTAINER Frank Wang "eternnoir@gmail.com"
-
+#USER root
 EXPOSE 8080
 
 ENV TOMCAT_VERSION 8.0.38
@@ -42,8 +42,9 @@ RUN cp /assets/config/tomcat/tomcat-users.xml /opt/apache-tomcat-${TOMCAT_VERSIO
 
 CMD ["/assets/init"]
 
-RUN useradd foo && usermod -a -G root foo
-RUN chmod -R 0 /opt && \
+RUN useradd 1001 && usermod -a -G root 1001
+
+RUN chgrp -R 0 /opt && \
  chgrp -R 0 /tmp && \
  chmod -R g+rw /opt && \
  chmod -R g+rw /tmp && \
@@ -51,4 +52,3 @@ RUN chmod -R 0 /opt && \
  find /tmp -type d -exec chmod g+x {} + && \
  chown -R 1001:0 /opt && \
  chown -R 1001:0 /tmp
-USER foo
