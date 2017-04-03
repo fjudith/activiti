@@ -7,7 +7,7 @@
 ### 
 FROM openjdk:7
 MAINTAINER Frank Wang "eternnoir@gmail.com"
-USER gogunn
+
 EXPOSE 8080
 
 ENV TOMCAT_VERSION 8.0.38
@@ -42,3 +42,7 @@ RUN cp /assets/config/tomcat/tomcat-users.xml /opt/apache-tomcat-${TOMCAT_VERSIO
 
 CMD ["/assets/init"]
 
+RUN useradd 1001 && usermod -a -G root 1001
+chmod -R g+rwx
+chgrp -R 1001
+USER gogunn
