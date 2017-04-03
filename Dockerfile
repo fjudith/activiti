@@ -42,7 +42,7 @@ RUN cp /assets/config/tomcat/tomcat-users.xml /opt/apache-tomcat-${TOMCAT_VERSIO
 
 CMD ["/assets/init"]
 
-RUN useradd 1001 && usermod -a -G root 1001
+RUN useradd foo && usermod -a -G root foo
 RUN chmod -R 0 /opt && \
  chgrp -R 0 /tmp && \
  chmod -R g+rw /opt && \
@@ -51,4 +51,4 @@ RUN chmod -R 0 /opt && \
  find /tmp -type d -exec chmod g+x {} + && \
  chown -R 1001:0 /opt && \
  chown -R 1001:0 /tmp
-USER 1001
+USER foo
